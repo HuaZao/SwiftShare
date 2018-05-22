@@ -105,7 +105,7 @@ class ShareView: UIView {
     }
     
     // MARK: - 监听通知
-    func shareCompleted(_ note: Notification) {
+    @objc func shareCompleted(_ note: Notification) {
         self.dismiss(true)
     }
     
@@ -227,11 +227,11 @@ class ShareView: UIView {
     }
     
     // MARK: - Action
-    func cancleButtonAction(_ sender: UIButton) {
+    @objc func cancleButtonAction(_ sender: UIButton) {
         tappedCancel()
     }
     
-    func maskViewClick(_ sender: UIControl) {
+    @objc func maskViewClick(_ sender: UIControl) {
         tappedCancel()
     }
     
@@ -333,7 +333,7 @@ class ShareView: UIView {
                 self.containView.frame = CGRect(x: 0, y: SCREEN_HEIGHT - height, width: SCREEN_WIDTH, height: height)
             }
             zhezhaoView.alpha = 0.6
-        }) { _ in }
+        }) 
         
     }
 }

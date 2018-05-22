@@ -171,7 +171,7 @@ class ShareItem: NSObject {
             controller.addAttachmentData(imageData!, mimeType: "image/png", fileName: "图片.png")
         }
         controller.mailComposeDelegate = self
-        presentVC.present(controller, animated: true) { _ in }
+        presentVC.present(controller, animated: true)
     }
     
     private func sendMessage(to phoneNum: String) {
@@ -183,7 +183,7 @@ class ShareItem: NSObject {
         controller.recipients = [phoneNum]
         controller.body = shareText + String(describing: shareUrl!)
         controller.messageComposeDelegate = self
-        presentVC.present(controller, animated: true) { _ in }
+        presentVC.present(controller, animated: true)
     }
 }
 
@@ -191,12 +191,12 @@ class ShareItem: NSObject {
 extension ShareItem: MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate{
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?){
-        presentVC.dismiss(animated: true) { _ in }
+        presentVC.dismiss(animated: true)
         NotificationCenter.default.post(name:NotifyShareCompleted, object: self, userInfo: nil)
     }
     
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-        presentVC.dismiss(animated: true) { _ in }
+        presentVC.dismiss(animated: true)
         NotificationCenter.default.post(name:NotifyShareCompleted, object: self, userInfo: nil)
     }
 }
